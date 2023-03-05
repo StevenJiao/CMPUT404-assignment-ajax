@@ -145,7 +145,7 @@ function addEntity(entity, data) {
     // drawNextFrame(); // (but should we?)
     //XXX: Send a XHTML Request that updates the entity you just modified!
     sendJSONXMLHTTPRequest(
-        "entity/" + entity,
+        "http://" + host + "/entity/" + entity,
         {
             'accept': 'appliction/json',
             'method': 'POST',
@@ -280,7 +280,7 @@ mouse.mousedraggers.push(function(x,y,clicked,e) {
 function update() {
     //XXX: TODO Get the world from the webservice using a XMLHTTPRequest
     sendJSONXMLHTTPRequest(
-        'world',
+        "http://" + host + '/world',
         {
             'accept': 'application/json',
             'method': 'GET',

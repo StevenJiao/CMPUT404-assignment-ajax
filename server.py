@@ -73,7 +73,7 @@ def flask_post_json():
 
 @app.route("/")
 def hello():
-    return app.send_static_file('index.html')
+    return app.redirect('/static/index.html')
 
 @app.route("/entity/<entity>", methods=['POST','PUT'])
 def update(entity):
