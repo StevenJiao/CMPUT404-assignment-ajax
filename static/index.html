@@ -62,7 +62,7 @@ function sendJSONXMLHTTPRequest(url, objects, callback) {
 world = {};
 var fillStyleInd = 0;
 // red, blue, green, purple, pink, yellow, add any colours!
-var fillStyles = ['#ff0000', '#0000ff', '#00ff00', '#9000ff', '#ff00d0', '#fff000'];
+var fillStyles = ['#ff0000', '#0000ff', '#00ff00', '#9000ff', '#ff00d0', '#fff000' ];
 //XXX: TODO Make this prettier!
 function drawCircle(context,entity) {
     with(context) {
@@ -76,6 +76,8 @@ function drawCircle(context,entity) {
         // funky lights
         fillStyle = fillStyles[fillStyleInd++]
         fillStyleInd %= fillStyles.length
+
+        // console.log(fillStyleInd)
 
         strokeStyle = fillStyle;
         arc(x, y, (entity["radius"]) ? entity["radius"]:50, 0, 2.0 * Math.PI, false);  
