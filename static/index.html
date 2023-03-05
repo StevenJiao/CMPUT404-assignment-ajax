@@ -40,7 +40,7 @@ function sendJSONXMLHTTPRequest(url, objects, callback) {
                 if (xhr.status==200) {
                     //XXX: parse some JSON from the request!
                     //XXX: Pass the data to the callback!
-                    callback ? callback = JSON.parse(xhr.responseText) : None
+                    callback(JSON.parse(xhr.responseText))
                 }
             } 
             catch(e) {
@@ -142,7 +142,7 @@ function getPosition(e) {
 
 function addEntity(entity, data) {
     world[entity] = data;
-    drawNextFrame(); // (but should we?)
+    // drawNextFrame(); // (but should we?)
     //XXX: Send a XHTML Request that updates the entity you just modified!
     sendJSONXMLHTTPRequest(
         "entity/" + entity,
@@ -151,7 +151,10 @@ function addEntity(entity, data) {
             'method': 'POST',
             'data': data
         },
-        world[entity]
+        (data) => {
+            world[entity] = data
+            drawNextFrame()
+        }
     )
 }
 
@@ -283,9 +286,12 @@ function update() {
             'method': 'GET',
             'data': world
         },
-        world
+        (data) => {
+            world = data
+            drawNextFrame()
+        }
     )
-    drawFrame();
+    drawFrame()
 }
 
 // 30 frames per second
