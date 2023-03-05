@@ -60,7 +60,7 @@
  
 ** Restrictions
    - [x] Use Python 3.6 - using 3.7
-   - [ ] Must run in the VM (Ubuntu 18.10)
+   - [x] Must run in the VM (Ubuntu 18.10) - free tests passed
    - [x] License your code properly (use an OSI approved license)
      - Put your name on it!
 
